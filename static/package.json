@@ -1,0 +1,14 @@
+{
+    "name": "yaocheng-oss",
+    "version": "1.0.0",
+    "description": "xn-yc-oss",
+    "main": "fis-conf.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "fis3-postpackager-loader": "^2.1.4"
+    }
+}
