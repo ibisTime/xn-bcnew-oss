@@ -43,9 +43,9 @@ $(function() {
         fields: fields,
         code: code,
         view: view,
-        detailCode: '801016',
-        addCode: '801010',
-        editCode: '801012',
+        detailCode: '628226',
+        addCode: '628220',
+        editCode: '628222',
         beforeSubmit: function(data) {
             if (code) {
                 return data;

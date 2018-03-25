@@ -7,6 +7,13 @@ $(function() {
     }, {
 		title: '内容',
 		field: 'content',
+        formatter: function(v, data){
+        	var description = v;
+        	if(description.length>50){
+				description = description.substring(0,50)+"...";
+        	}
+        	return description;
+        }
 	},{
 		title: '类型',
 		field: 'type',

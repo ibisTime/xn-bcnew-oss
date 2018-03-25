@@ -121,6 +121,7 @@ $(function() {
         dw.showModal();
 
         buildDetail({
+            container: $('#formContainer'),
             fields: [{
                 field: 'remark1',
                 title: '添加备注',
@@ -131,12 +132,10 @@ $(function() {
             buttons: [{
                 title: '添加备注',
                 handler: function() {
-                	if($('#remark1').val()==""){
-						toastr.error("备注不能为空");
-					}else{
-                        var popFormData = $('#popForm').serializeObject();
-                        var data={};
-                        data.remark = popFormData.remark1
+                	if($('#popForm').valid()){
+                        var data = $('#popForm').serializeObject();
+                        data.remark = data.remark1;
+                        delete data.remark1;
                         data.userId = selRecords[0].userId;
                         reqApi({
                             code: '805082',
