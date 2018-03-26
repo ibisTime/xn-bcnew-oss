@@ -1146,7 +1146,7 @@ function buildDetail(options) {
             } else if (item.type == 'o2m') {
                 html += '<li class="clearfix" type="' + (item.amount ? 'amount' : '') +
                     '" style="' + (item.width ? ('width: ' + item.width + ';display:inline-block;') : '') +
-                    (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + '</label>' +
+                    (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + ':</label>' +
                     '<div id="' + item.field + '" name="' + item.field + '"></div></li>';
             } else if (item.type == "checkbox") {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>';
@@ -1628,6 +1628,11 @@ function buildDetail(options) {
                             if (item.useData) {
                                 displayValue = $.isArray(item.useData) ? item.useData : (data || []);
                             }
+                            if(typeof(displayValue)=="object"){
+	                        	var tmpl = [];
+	                        	tmpl.push(displayValue)
+	                        	displayValue = tmpl
+	                        }
                             $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
                             $('#' + item.field + 'List').bootstrapTable({
                                 striped: true,

@@ -9,12 +9,12 @@ $(function() {
 		field: 'name',
         search:true
 	},{
-		title: '币种',
+		title: '币种/交易所',
 		field: 'toCoin',
 		type: 'select',
-		listCode:'628307',
-        keyName: 'symbol',
-        valueName: '{{cname.DATA}}({{symbol.DATA}})',
+		listCode:'628335',
+        keyName: 'ename',
+        valueName: '{{sname.DATA}}({{ename.DATA}})',
         search:true
 	},{
 		title: '关注数',
@@ -105,11 +105,11 @@ $(function() {
             container: $('#formContainer'),
             fields: [{
                 field: 'toCoin1',
-                title: '币种',
+                title: '币种/交易所',
                 type: 'select',
-				listCode:'628307',
-		        keyName: 'symbol',
-		        valueName: '{{cname.DATA}}({{symbol.DATA}})',
+				listCode:'628335',
+		        keyName: 'ename',
+		        valueName: '{{sname.DATA}}({{ename.DATA}})',
 				value: selRecords[0].toCoin || '',
 			}, {
                 field: 'location1',

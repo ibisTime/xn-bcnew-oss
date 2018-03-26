@@ -15,7 +15,10 @@ $(function() {
 		pageCode:'628005',
         keyName: 'code',
         valueName: 'name',
-        search:true
+        search:true,
+        formatter: function(v,data){
+        	return data.typeName
+        }
 	},{
 		title: '币吧',
 		field: 'toCoin',
@@ -23,7 +26,10 @@ $(function() {
 		pageCode:'628235',
         keyName: 'code',
         valueName: 'name',
-        search:true
+        search:true,
+        formatter: function(v,data){
+        	return data.toCoinName
+        }
 	},{
 		title: '来源',
 		field: 'source',

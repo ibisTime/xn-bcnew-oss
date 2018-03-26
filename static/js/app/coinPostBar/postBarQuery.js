@@ -56,9 +56,6 @@ $(function() {
 		},
         search: true
 	},  {
-		title: '更新人',
-		field: 'updater',
-	},  {
         title: '发布时间',
         field: 'publishDatetime',
         formatter: dateTimeFormat,
@@ -74,4 +71,62 @@ $(function() {
 		pageCode: '628660'
 	});
 	
+	//设置位置
+    $('#setLocationBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        var dw = dialog({
+            content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">设置位置</li></ul>' +
+                '</form>'
+        });
+
+        dw.showModal();
+
+        buildDetail({
+            container: $('#formContainer'),
+            fields: [{
+                field: 'location1',
+                title: '位置',
+				type: 'select',
+				data:{
+					"0":"普通",
+					"1":"热门"
+				},
+				value: selRecords[0].location || '0',
+				required: true,
+            }],
+            buttons: [{
+                title: '设置',
+                handler: function() {
+                	if($('#popForm').valid()){
+                        var data = $('#popForm').serializeObject();
+                        data.code = selRecords[0].code;
+                        data.location = data.location1;
+                        delete data.location1;
+                        
+                        reqApi({
+                            code: '628654',
+                            json: data
+                        }).done(function(data) {
+                        	sucList();
+                            dw.close().remove();
+                        });
+                    }
+
+                }
+            }, {
+                title: '取消',
+                handler: function() {
+                    dw.close().remove();
+                }
+            }]
+        });
+
+        dw.__center();
+        
+    });
 });

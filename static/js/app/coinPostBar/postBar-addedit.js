@@ -9,7 +9,7 @@ $(function() {
             data.approveStatus = '1';
             data.code = code;
             reqApi({
-                code: '628651',
+                code: '628280',
                 json: data
             }).done(function(data) {
                 sucDetail();
@@ -22,7 +22,7 @@ $(function() {
             data.approveStatus = '0';
             data.code = code;
             reqApi({
-                code: '628651',
+                code: '628280',
                 json: data
             }).done(function(data) {
                 sucDetail();

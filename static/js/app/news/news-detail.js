@@ -8,22 +8,10 @@ $(function() {
         required: true,
 	},{
 		title: '类型',
-		field: 'type',
-        type: 'select',
-		pageCode:'628005',
-		params:{
-			status: "1"
-		},
-        keyName: 'code',
-        valueName: 'name',
-        required: true,
+		field: 'typeName',
 	},{
 		title: '币吧',
-		field: 'toCoin',
-        type: 'select',
-		pageCode:'628235',
-        keyName: 'code',
-        valueName: 'name',
+		field: 'toCoinName',
 	},{
 		title: '来源',
 		field: 'source',
