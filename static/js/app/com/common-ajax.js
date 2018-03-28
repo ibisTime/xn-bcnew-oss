@@ -93,7 +93,7 @@ function reqApi(options, updateType) {
         	if(res.errorCode=='4'){
         		sessionStorage.removeItem("userId"); //userId
         		sessionStorage.removeItem("token"); //token
-        		parent.frames["rightFrame"].toastr.warning("登录失效，请重新登录");
+        		alert("登录失效，请重新登录");
         		
         		setTimeout(function() {
                     location.replace("../signin.html?loginKind="+sessionStorage.getItem("loginKind"));

@@ -22,6 +22,9 @@ $(function() {
 		field: 'toCoin',
         type: 'select',
 		pageCode:'628235',
+		params:{
+			status: '1'
+		},
         keyName: 'code',
         valueName: 'name',
 	},{
@@ -31,10 +34,9 @@ $(function() {
 		title: '作者',
 		field: 'auther',
 	},{
-		title: '广告图',
+		title: '广告图(最多三张)',
 		field: 'advPic',
 		type: 'img',
-		single: true,
         required: true,
 	},{
 		title: '内容',

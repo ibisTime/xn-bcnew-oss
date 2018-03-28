@@ -7,11 +7,13 @@ $(function() {
     }, {
 		title: '交易所',
 		field: 'exchangeCname',
-        type: 'select',
-		listCode:'628317',
-        keyName: 'cname',
-        valueName: '{{cname.DATA}}({{ename.DATA}})',
-        searchName:'ename',
+		formatter: function(v,data){
+			if(data.exchangeEname){
+				return data.exchangeCname+"("+data.exchangeEname+")"
+			}else{
+				return v;
+			}
+		},
         search:true
 	},{
 		title: '币种',

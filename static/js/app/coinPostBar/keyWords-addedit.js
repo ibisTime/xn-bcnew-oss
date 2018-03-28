@@ -23,9 +23,10 @@ $(function() {
     }, {
         title: '反应',
         field: 'reaction',
+        type: 'select',
+        key: 'reaction_status',
+        formatter: Dict.getNameForList('reaction_status'),
         required: true,
-        value: '3',
-        hidden: true
     }, {
         title: '备注',
         field: 'remark',

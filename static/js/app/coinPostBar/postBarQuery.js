@@ -68,7 +68,8 @@ $(function() {
 	}];
 	buildList({
 		columns: columns,
-		pageCode: '628660'
+		pageCode: '628660',
+		deleteCode: '628655'
 	});
 	
 	//设置位置
@@ -129,4 +130,19 @@ $(function() {
         dw.__center();
         
     });
+    
+    
+    //相关评论
+    $('#commentBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+
+        window.location.href = "./comment.html?objectCode=" + selRecords[0].code;
+
+    });
+    
+    
 });

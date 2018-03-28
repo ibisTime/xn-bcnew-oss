@@ -35,12 +35,12 @@ $(function() {
 			"1":"热门"
 		},
 	},  {
-		title: '更新人',
-		field: 'updater',
-	},  {
         title: '发布时间',
         field: 'publishDatetime',
         formatter: dateTimeFormat,
+	},  {
+		title: '更新人',
+		field: 'updater',
     }];
 
     buildDetail({

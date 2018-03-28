@@ -5,68 +5,36 @@ $(function() {
 		title : '',
 		checkbox : true
     }, {
-        title: '评论内容',
-        field: 'content',
-        search:true,
-	},{
-		title: '类型',
-		field: 'type',
-        type: 'select',
-        data:{
-        	"3":"评论帖子",
-        	"4":"评论帖子评论"
-        },
-        search:true,
-	},{
-		title: '评论人',
-		field: 'nickname',
-	},{
-		title: '评论时间',
-		field: 'commentDatetime',
-    	formatter: dateTimeFormat,
-        field1: 'commentDateStart',
-        title1: '评论时间',
-        type: 'date',
-        field2: 'commentDateEnd',
-        twoDate: true,
+		title: '交易所英文名',
+		field: 'exchangeEname',
         search: true
-	}, {
+	},{
+		title: '交易所中文名',
+		field: 'exchangeCname',
+	},{
+		title: '币种',
+		field: 'coin',
+        search: true
+	},{
+		title: '参考币种',
+		field: 'toCoin',
+        search: true
+	},{
+		
 		title: '位置',
 		field: 'location',
-        type: 'select',
-        data:{
+		type: 'select',
+		data:{
 			"0":"普通",
 			"1":"热门"
-        },
-        search:true,
-	},{
-		title: '状态',
-		field: 'status',
-        type: 'select',
-        key: 'post_comment_status',
-        formatter: Dict.getNameForList('post_comment_status'),
+		},
         search: true
-	},{
-		title: '针对内容',
-		field: 'parentContent',
 	}];
 	buildList({
 		columns: columns,
-		pageCode: '628287',
-        searchParams: {
-    		type:"post"
-        }
+		pageCode: '628325'
 	});
 	
-	$('#detailBtn').off("click").click(function(){
-		var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-        
-        window.location.href = "./comment_addedit.html?v=1&code=" + selRecords[0].code+"&type="+selRecords[0].type+"&isTop="+selRecords[0].isTop;
-	})
 	
 	//设置位置
     $('#setLocationBtn').click(function() {
@@ -101,12 +69,12 @@ $(function() {
                 handler: function() {
                 	if($('#popForm').valid()){
                         var data = $('#popForm').serializeObject();
-                        data.code = selRecords[0].code;
+                        data.id = selRecords[0].id;
                         data.location = data.location1;
                         delete data.location1;
                         
                         reqApi({
-                            code: '628282',
+                            code: '628320',
                             json: data
                         }).done(function(data) {
                         	sucList();
@@ -126,5 +94,4 @@ $(function() {
         dw.__center();
         
     });
-	
 });

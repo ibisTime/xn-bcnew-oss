@@ -13,8 +13,8 @@ $(function() {
 		field: 'type',
         type: 'select',
         data:{
-        	"3":"评论帖子",
-        	"4":"评论帖子评论"
+        	"1":"评论资讯",
+        	"2":"评论资讯评论"
         },
         search:true,
 	},{
@@ -54,7 +54,7 @@ $(function() {
 		columns: columns,
 		pageCode: '628287',
         searchParams: {
-    		type:"post"
+    		type:"news"
         }
 	});
 	
@@ -65,7 +65,7 @@ $(function() {
             return;
         }
         
-        window.location.href = "./comment_addedit.html?v=1&code=" + selRecords[0].code+"&type="+selRecords[0].type+"&isTop="+selRecords[0].isTop;
+        window.location.href = "../coinPostBar/comment_addedit.html?v=1&code=" + selRecords[0].code+"&type="+selRecords[0].type+"&isTop="+selRecords[0].isTop;
 	})
 	
 	//设置位置

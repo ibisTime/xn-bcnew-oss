@@ -38,6 +38,16 @@ $(function() {
 		singleSelect:false,
 	});
 	
+	$('#detailBtn').off("click").click(function(){
+		var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        
+        window.location.href = "./jinseNews_detail.html?id=" + selRecords[0].id;
+	})
+	
 	//挑选
     $('#chooseBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -55,7 +65,7 @@ $(function() {
         
         var dw = dialog({
             content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">挑选快讯</li></ul>' +
+                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">挑选资讯</li></ul>' +
                 '</form>'
         });
 

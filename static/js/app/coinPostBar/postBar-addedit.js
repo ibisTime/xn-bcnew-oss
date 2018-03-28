@@ -9,7 +9,7 @@ $(function() {
             data.approveStatus = '1';
             data.code = code;
             reqApi({
-                code: '628280',
+                code: '628651',
                 json: data
             }).done(function(data) {
                 sucDetail();
@@ -22,7 +22,7 @@ $(function() {
             data.approveStatus = '0';
             data.code = code;
             reqApi({
-                code: '628280',
+                code: '628651',
                 json: data
             }).done(function(data) {
                 sucDetail();
@@ -72,19 +72,18 @@ $(function() {
 			"1":"热门"
 		},
 	},  {
-		title: '更新人',
-		field: 'updater',
-	},  {
         title: '发布时间',
         field: 'publishDatetime',
         formatter: dateTimeFormat,
+	},  {
+		title: '更新人',
+		field: 'updater',
     }];
 
     buildDetail({
         fields: fields,
         code: code,
         view: true,
-        editCode: "628651",
         detailCode: '628661',
         buttons: buttons
     });

@@ -17,6 +17,15 @@ $(function() {
         title: '头像',
         type: 'img'
     }, {
+        field: 'gender',
+        title: '性别',
+        type:'select',
+        data:{
+        	"0": "未知",
+        	"1": "男",
+        	"2": "女"
+        }
+    }, {
         field: 'birthday',
         title: '生日',
     }, {

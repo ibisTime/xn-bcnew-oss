@@ -9,7 +9,7 @@ $(function() {
 		field: 'name',
         search:true
 	},{
-		title: '币种/交易所',
+		title: '关联币种/交易所',
 		field: 'toCoin',
 		type: 'select',
 		listCode:'628335',
@@ -43,6 +43,9 @@ $(function() {
 			"1":"热门"
 		},
         search: true
+	},  {
+		title: '序号',
+		field: 'orderNo',
 	},  {
 		title: '更新人',
 		field: 'updater',
@@ -121,6 +124,11 @@ $(function() {
 				},
 				value: selRecords[0].location || '0',
 				required: true,
+			},  {
+				title: '序号',
+				field: 'orderNo1',
+				value: selRecords[0].value || '',
+				number: true
             }],
             buttons: [{
                 title: '上架',
@@ -130,8 +138,10 @@ $(function() {
                         data.code = selRecords[0].code;
                         data.toCoin = data.toCoin1;
                         data.location = data.location1;
+                        data.orderNo = data.orderNo1;
                         delete data.toCoin1;
                         delete data.location1;
+                        delete data.orderNo1;
                         
                         reqApi({
                             code: '628232',

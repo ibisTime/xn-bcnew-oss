@@ -13,7 +13,8 @@ $(function() {
 				description = description.substring(0,50)+"...";
         	}
         	return description;
-        }
+        },
+        search: true,
 	},{
 		title: '类型',
 		field: 'type',

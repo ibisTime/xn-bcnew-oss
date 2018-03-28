@@ -1,5 +1,4 @@
 $(function() {
-    var objectCode = getQueryString('objectCode')||'';
 	
 	var columns = [{
 		field : '',
@@ -14,8 +13,8 @@ $(function() {
 		field: 'type',
         type: 'select',
         data:{
-        	"3":"评论帖子",
-        	"4":"评论帖子评论"
+        	"1":"评论资讯",
+        	"2":"评论资讯评论"
         },
         search:true,
 	},{
@@ -40,18 +39,9 @@ $(function() {
 		pageCode: '628287',
         searchParams: {
         	status: 'A',
-        	type:"post",
-        	objectCode:objectCode
+    		type:"news"
         }
 	});
-	
-	if(objectCode){
-		$('.tools .toolbar').empty();
-        $('.tools .toolbar').html('<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
-        $('#backBtn').on('click', function() {
-            goBack();
-        });
-	}
 	
 	$('#detailBtn').off("click").click(function(){
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -60,11 +50,11 @@ $(function() {
             return;
         }
         
-        window.location.href = "./comment_addedit.html?v=1&code=" + selRecords[0].code+"&type="+selRecords[0].type+"&isTop="+selRecords[0].isTop;
+        window.location.href = "../coinPostBar/comment_addedit.html?v=1&code=" + selRecords[0].code+"&type="+selRecords[0].type+"&isTop="+selRecords[0].isTop;
 	})
 	
     //审查
-    $('#examineBtn').click(function() {
+    $('#chooseBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -76,7 +66,7 @@ $(function() {
             return;
         }
         
-        window.location.href = "./comment_addedit.html?code=" + selRecords[0].code+"&type="+selRecords[0].type+"&isTop="+selRecords[0].isTop;
+        window.location.href = "../coinPostBar/comment_addedit.html?code=" + selRecords[0].code+"&type="+selRecords[0].type+"&isTop="+selRecords[0].isTop;
 
     });
     

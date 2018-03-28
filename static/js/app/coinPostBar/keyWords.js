@@ -10,6 +10,13 @@ $(function() {
         title: '关键字',
         search: true
     }, {
+        title: '反应',
+        field: 'reaction',
+        type: 'select',
+        key: 'reaction_status',
+        formatter: Dict.getNameForList('reaction_status'),
+        search: true
+    }, {
         field: 'updater',
         title: '最近修改人'
     }, {

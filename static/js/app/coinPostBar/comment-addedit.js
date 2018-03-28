@@ -12,7 +12,7 @@ $(function() {
             data.approveStatus = '1';
             data.code = code;
             reqApi({
-                code: '628651',
+                code: '628280',
                 json: data
             }).done(function(data) {
                 sucDetail();
@@ -25,7 +25,7 @@ $(function() {
             data.approveStatus = '0';
             data.code = code;
             reqApi({
-                code: '628651',
+                code: '628280',
                 json: data
             }).done(function(data) {
                 sucDetail();
@@ -56,22 +56,14 @@ $(function() {
 			},{
 				title: '类型',
 				field: 'type',
-		        type: 'select',
-				pageCode:'628005',
-		        keyName: 'code',
-		        valueName: 'name',
 		        formatter: function(v,data){
-		        	return data.type
+		        	return data.typeName
 		        },
 			},{
 				title: '币吧',
 				field: 'toCoin',
-		        type: 'select',
-				pageCode:'628235',
-		        keyName: 'code',
-		        valueName: 'name',
 		        formatter: function(v,data){
-		        	return data.toCoin
+		        	return data.toCoinName
 		        },
 			},{
 				title: '来源',
@@ -211,7 +203,6 @@ $(function() {
         fields: fields,
         code: code,
         view: true,
-        editCode: "628280",
         detailCode: '628288',
         buttons: buttons
     });

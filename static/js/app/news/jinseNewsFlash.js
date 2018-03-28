@@ -7,6 +7,7 @@ $(function() {
     }, {
 		title: '内容',
 		field: 'content',
+        search: true,
 	},{
         title: '抓取时间',
         field: 'crawlDatetime',
