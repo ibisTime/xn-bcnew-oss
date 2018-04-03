@@ -1752,11 +1752,16 @@ function buildDetail(options) {
 
                             sp.length && sp.forEach(function(item) {
                                 var suffix = item.slice(item.lastIndexOf('.') + 1);
-                                var src = (item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
-                                var src1 = (item.indexOf('http://') > -1 ?
+                                var src = (item.indexOf('http://') > -1 || item.indexOf('https://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
+                                var src1 = (item.indexOf('http://') > -1 || item.indexOf('https://') > -1 ?
                                     item.substring(item.lastIndexOf("/") + 1) :
                                     item);
-                                var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
+                                if (item.indexOf('http://') > -1|| item.indexOf('https://') > -1) {
+	                                var name = src.substring(src.lastIndexOf("/") + 1);
+	                            } else {
+	                                var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
+	                            }
+                                
                                 if (isDocOrAviOrZip(suffix)) {
                                     imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i></div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
                                 } else if (isAcceptImg(suffix)) {
@@ -1793,8 +1798,8 @@ function buildDetail(options) {
 
                             sp.length && sp.forEach(function(item) {
                                 var suffix = item.slice(item.lastIndexOf('.') + 1);
-                                var src = item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item);
-                                var src1 = item.indexOf('http://') > -1 ?
+                                var src = item.indexOf('http://') > -1 || item.indexOf('https://') > -1 ? item : (OSS.picBaseUrl + '/' + item);
+                                var src1 = item.indexOf('http://') > -1 || item.indexOf('https://') > -1 ?
                                     item.substring(item.lastIndexOf("/") + 1) : item;
                                 var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
                                 if (isDocOrAviOrZip(suffix)) {
@@ -1822,13 +1827,14 @@ function buildDetail(options) {
                         var defaultFile = getDefaultFileIcon();
                         sp.length && sp.forEach(function(item) {
                             var suffix = item.slice(item.lastIndexOf('.') + 1);
-                            var src = item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item);
+                            var src = item.indexOf('http://') > -1 || item.indexOf('https://') > -1? item : (OSS.picBaseUrl + '/' + item);
                             var src1 = item;
-                            if (item.indexOf('http://') > -1) {
+                            if (item.indexOf('http://') > -1|| item.indexOf('https://') > -1) {
                                 var name = src.substring(src.lastIndexOf("/") + 1);
                             } else {
                                 var name = src1.substring(0, src1.lastIndexOf("_")) + "." + suffix;
                             }
+                            
                             if (isDocOrAviOrZip(suffix)) {
                                 imgsHtml += '<div class="img-ctn" data-src="' + src1 + '" style="display: inline-block;position: relative;">' + '<div class="center-img-wrap">' + '<img width="100" src="' + getDocOrAviOrZipIcon(suffix) + '" />' + '<i class="zmdi zmdi-close-circle-o zmdi-hc-fw"></i>' + '<i class="zmdi zmdi-download zmdi-hc-fw"></i>' + '</div>' + '<div class="t_3dot w100p" title="' + name + '">' + name + '</div>' + '</div>';
                             } else if (isAcceptImg(suffix)) {
