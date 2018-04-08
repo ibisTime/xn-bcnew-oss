@@ -78,6 +78,9 @@ $(function() {
 				field: 'type',
 		        type: 'select',
 				pageCode:'628005',
+				params:{
+					status: '1'
+				},
 		        keyName: 'code',
 		        valueName: 'name',
         		required: true,
