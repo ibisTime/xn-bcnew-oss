@@ -25,6 +25,15 @@ $(function() {
         },
         search: true,
 	},{
+		title: '是否推送',
+		field: 'isPush',
+        type: 'select',
+        data:{
+        	"0":"不推送",
+        	"1":"推送"
+        },
+        search: true,
+	},{
 		title: '来源',
 		field: 'source',
 	},{
@@ -87,7 +96,7 @@ $(function() {
             toastr.info("分类已上架！");
             return;
         }
-        window.location.href = "./newsFlash_up.html?code=" + selRecords[0].code;
+        window.location.href = "./newsFlash_up.html?code=" + selRecords[0].code+"&type="+ selRecords[0].type;
     });
 
     //下架

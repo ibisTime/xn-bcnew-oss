@@ -19,6 +19,14 @@ $(function() {
 		title: '来源',
 		field: 'source',
 	},{
+		title: '是否推送',
+		field: 'isPush',
+        type: 'select',
+        data:{
+        	"0":"不推送",
+        	"1":"推送"
+        },
+	},{
 		title: '状态',
 		field: 'status',
         type: 'select',
