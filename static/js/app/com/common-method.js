@@ -681,7 +681,9 @@ function buildList(options) {
             $('#' + item.field1).click(function() {
                 var end = $('#' + item.field2).val();
                 var obj = {
-                    elem: '#' + item.field1
+                    elem: '#' + item.field1,
+	                istime: item.type == 'datetime',
+	                format: item.type == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
                 };
                 end && (obj.max = end);
                 laydate(obj);
@@ -689,7 +691,9 @@ function buildList(options) {
             $('#' + item.field2).click(function() {
                 var start = $('#' + item.field1).val();
                 var obj = {
-                    elem: '#' + item.field2
+                    elem: '#' + item.field2,
+	                istime: item.type == 'datetime',
+	                format: item.type == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
                 };
                 start && (obj.min = start);
                 laydate(obj);
@@ -1140,7 +1144,11 @@ function buildDetail(options) {
                 ' style="' + (item.hidden ? 'display:none;' : '') + '" class="form-title">' + item.title + '</div>';
         } else if (item.type == 'hidden') {
             html = '<input type="hidden" id="' + item.field + '" name="' + item.field + '"/>' + html;
-        } else if (item.readonly) {
+        } else if(item.type == 'chooseMap'){
+        	html +='<li class="clearfix chooseMap-wrap" style="display:inline-block;"><label><b>' + ((item.required && '*') || '') + '</b>'+ item.title + ':</label>'
+        			+ '<samp class="chooseMap-inputWrap"><input id="' + item.field + '" name="' + item.field + '" class="control-def"/><i class="chooseMap-mask"></i></samp>'
+        			+'<input id="chooseMap" type="button" class="btn margin-left-20" value="选择地址"></li>';
+        }else if (item.readonly) {
             if (item.type == "citySelect") {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>' + '<span id="province" name="province" style="display: inline-block;"></span>' + '<span id="city" name="city" style="display: inline-block;padding: 0 8px;"></span>' + '<span id="area" name="area" style="display: inline-block;"></span></li>'
             } else if (item.type == 'o2m') {
@@ -1194,12 +1202,12 @@ function buildDetail(options) {
                     '') + ' id="' + item.field + '" name="' + item.field + '" class="control-def"></select></li>';
             } else if (item.type == 'img') {
                 imgList.push(item);
-                html += '<div class="btn-file"><span>选择文件</span>' + '<input type="file" tabindex="1" id="' + item.field + 'Img" name="' + item.field + 'Img" />' + '</div><div id="' + item.field + '" style="margin-left: 195px;"></div></li>';
+                html += '<div class="btn-file"><span>选择文件</span>' + '<input type="file" tabindex="1" id="' + item.field + 'Img" name="' + item.field + 'Img" />' + '</div><div id="' + item.field + '" style="margin-left: 195px;overflow:hidden;"></div></li>';
             } else if (item.type == "file") {
-                html += '<div class="btn-file"><span>选择文件</span>' + '<input type="file" tabindex="1" id="' + item.field + '" name="' + item.field + '" />' + '</div><div id="' + item.field + '" style="margin-left: 195px;"></div></li>';
+                html += '<div class="btn-file"><span>选择文件</span>' + '<input type="file" tabindex="1" id="' + item.field + '" name="' + item.field + '" />' + '</div><div id="' + item.field + '" style="margin-left: 195px;overflow:hidden;"></div></li>';
             } else if (item.type == 'textarea' && !item.normalArea) {
                 textareaList.push({ field: item.field });
-                html += '<div style="width:800px;float:left;"><textarea style="height:300px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
+                html += '<div style="width:802px;float:left;"><textarea style="height:300px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'textarea' && item.normalArea) {
                 html += '<div style="width:400px;float:left;"><textarea style="resize:none;height:200px;width: 320px !important;border: 1px solid #e0e0e0;padding: 8px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'citySelect') {
@@ -1596,7 +1604,7 @@ function buildDetail(options) {
                     item._keys.forEach(function(key) {
                         _value = _value[key] == undefined ? emptyObj : _value[key];
                     });
-                    displayValue = _value === emptyObj ? "" : _value;
+                    displayValue = _value === emptyObj ? "" : _value[item.field];
                 }
 
                 if (item.readonly) {
@@ -1929,7 +1937,7 @@ function buildDetail(options) {
                     $('#' + item.field).html('<a target="_blank" href="' + displayValue + '">' + displayValue + '</a>');
                 }
                 if (item.type == 'textarea' && !item.normalArea) {
-                    $('#' + item.field).css('width', '800px');
+                    $('#' + item.field).css('width', '802px');
                 }
                 if (item.afterSet) {
                     item.afterSet(displayValue, data);
@@ -2474,10 +2482,10 @@ function buildDetail1(options) {
                     '') + ' id="' + item.field + '-model" name="' + item.field + '" class="control-def"></select></li>';
             } else if (item.type == 'img') {
                 imgList.push(item);
-                html += '<div class="btn-file"><span>选择文件</span>' + '<input type="file" tabindex="1" id="' + item.field + 'Img-model" name="' + item.field + 'Img" />' + '</div><div id="' + item.field + '-model" style="margin-left: 195px;"></div></li>';
+                html += '<div class="btn-file"><span>选择文件</span>' + '<input type="file" tabindex="1" id="' + item.field + 'Img-model" name="' + item.field + 'Img" />' + '</div><div id="' + item.field + '-model" style="margin-left: 195px;overflow:hidden;"></div></li>';
             } else if (item.type == 'textarea' && !item.normalArea) {
                 textareaList.push({ field: item.field });
-                html += '<div style="width:800px;float:left;"><textarea style="height:300px;" id="' + item.field + '-model" name="' + item.field + '"></textarea></div></li>';
+                html += '<div style="width:802px;float:left;"><textarea style="height:300px;" id="' + item.field + '-model" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'textarea' && item.normalArea) {
                 html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;" id="' + item.field + '-model" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'citySelect') {

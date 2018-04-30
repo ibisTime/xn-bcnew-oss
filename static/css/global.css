@@ -488,6 +488,7 @@ textarea {
 	margin-bottom: 13px;
 	clear: both;
 	padding-right: 20px;
+	position: relative;
 }
 .ui-dialog .form-info li{
 	text-align: center;
@@ -1367,4 +1368,23 @@ svg circle:hover {
 }
 .fixed_i{
 	position: fixed !important;
+}
+.chooseMap-wrap .btn{
+	height: 32px;
+	font-size: 9pt;
+	margin-left: 20px;
+    margin-top: 0;
+}
+.chooseMap-inputWrap{
+	position: relative;
+	display: inline-block;
+}
+.chooseMap-inputWrap .chooseMap-mask{
+	width: 100%;
+    height: 32px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
 }

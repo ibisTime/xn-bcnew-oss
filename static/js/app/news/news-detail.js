@@ -35,7 +35,6 @@ $(function() {
         type: 'select',
         key: 'news_status',
         formatter: Dict.getNameForList('news_status'),
-        search: true
 	},{
         title: '发布时间',
         field: 'showDatetime',
@@ -44,6 +43,15 @@ $(function() {
         title: '更新时间',
         field: 'updateDatetime',
         formatter: dateTimeFormat,
+	},{
+        title: '拥有者名称',
+        field: 'ownerName',
+	},{
+		title: '拥有者类型',
+		field: 'ownerType',
+        type: 'select',
+        key: 'owner_type',
+        formatter: Dict.getNameForList('owner_type'),
 	},{
         title: '热门评论',
 		field: 'hotComentList',

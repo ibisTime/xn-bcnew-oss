@@ -45,6 +45,13 @@ $(function() {
         formatter: Dict.getNameForList('news_status'),
         search: true
 	},{
+		title: '拥有者类型',
+		field: 'ownerType',
+        type: 'select',
+        key: 'owner_type',
+        formatter: Dict.getNameForList('owner_type'),
+        search: true
+	},{
         title: '发布时间',
         field: 'showDatetime',
         formatter: dateTimeFormat,
