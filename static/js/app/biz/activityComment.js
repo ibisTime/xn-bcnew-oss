@@ -13,8 +13,8 @@ $(function() {
 		field: 'type',
         type: 'select',
         data:{
-        	"1":"评论资讯",
-        	"2":"评论资讯评论"
+        	"5":"评论活动",
+        	"6":"评论活动评论"
         },
         search:true,
 	},{

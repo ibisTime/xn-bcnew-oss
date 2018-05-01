@@ -153,6 +153,50 @@ $(function() {
 	        }]
     	}
     
+    var actFields={
+    		title: '针对活动',
+			field: 'activity',
+	        readonly: true,
+	        type: 'o2m',
+	        columns: [{
+	           field: 'title',
+		        title: '标题',
+		    }, {
+		        field: 'price',
+		        title: '价格',
+		        formatter: moneyFormat
+		    }, {
+		        field: 'maxCount',
+		        title: '最大报名人数'
+		    }, {
+		        field: 'address',
+		        title: '地址',
+		    }, {
+		        field: 'startDatetime',
+		        title: '开始时间',
+		        formatter: dateTimeFormat,
+		    }, {
+		        field: 'endDatetime',
+		        title: '结束时间',
+		        formatter: dateTimeFormat,
+		    }, {
+		        field: 'contactMobile',
+		        title: '联系电话',
+		    }, {
+		        field: 'applyUser',
+		        title: '申请人',
+		    }, {
+		        field: 'applyDatetime',
+		        title: '申请时间',
+		        formatter: dateTimeFormat,
+		    }, {
+		        title: '状态',
+		        field: 'status',
+		        type: 'select',
+		        key: 'activity_status',
+		        formatter: Dict.getNameForList('activity_status'),
+	        }]
+    	};
     
     
     //资讯
@@ -168,6 +212,12 @@ $(function() {
     		showFields = [postFields,postCommentFields]
     	}else{
     		showFields = [postFields]
+    	}
+    }else  if(type=='5'||type=='6'){
+    	if(isTop=='0'){
+    		showFields = [actFields,postCommentFields]
+    	}else{
+    		showFields = [actFields]
     	}
     }
 

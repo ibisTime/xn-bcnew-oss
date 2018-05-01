@@ -1146,7 +1146,7 @@ function buildDetail(options) {
             html = '<input type="hidden" id="' + item.field + '" name="' + item.field + '"/>' + html;
         } else if(item.type == 'chooseMap'){
         	html +='<li class="clearfix chooseMap-wrap" style="display:inline-block;"><label><b>' + ((item.required && '*') || '') + '</b>'+ item.title + ':</label>'
-        			+ '<samp class="chooseMap-inputWrap"><input id="' + item.field + '" name="' + item.field + '" class="control-def"/><i class="chooseMap-mask"></i></samp>'
+        			+ '<samp class="chooseMap-inputWrap"><input id="' + item.field + '" name="' + item.field + '" class="control-def" style="position: relative;z-index:8;"/><i class="chooseMap-mask"></i></samp>'
         			+'<input id="chooseMap" type="button" class="btn margin-left-20" value="选择地址"></li>';
         }else if (item.readonly) {
             if (item.type == "citySelect") {

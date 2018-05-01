@@ -13,8 +13,8 @@ $(function() {
 		field: 'type',
         type: 'select',
         data:{
-        	"1":"评论资讯",
-        	"2":"评论资讯评论"
+        	"5":"评论活动",
+        	"6":"评论活动评论"
         },
         search:true,
 	},{
@@ -31,15 +31,6 @@ $(function() {
         twoDate: true,
         search: true
 	}, {
-		title: '位置',
-		field: 'location',
-        type: 'select',
-        data:{
-			"0":"普通",
-			"1":"热门"
-        },
-        search:true,
-	},{
 		title: '状态',
 		field: 'status',
         type: 'select',
