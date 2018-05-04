@@ -23,7 +23,8 @@ $(function() {
         keyName: 'userId',
         valueName: '{{nickname.DATA}}-{{mobile.DATA}}',
         searchName: 'mobile',
-        search: true
+        search: true,
+        visible: false
     }, {
         field: 'title',
         title: '活动标题',
