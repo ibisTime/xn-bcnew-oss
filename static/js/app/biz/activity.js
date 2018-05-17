@@ -68,6 +68,14 @@ $(function() {
     }, {
         field: 'toApproveCount',
         title: '待审核数量'
+	},{
+		title: '是否置顶',
+		field: 'isTop',
+		type: 'select',
+		data:{
+			'0':'否',
+			'1':'是'
+		},
     }];
 
     buildList({
@@ -121,6 +129,29 @@ $(function() {
         
         window.location.href = "./activity_detail.html?code=" + selRecords[0].code+"&isCheck=1";
 	})
+    
+    
+    //置顶/取消置顶
+    $('#setIsTopBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        
+        var msg = selRecords[0].isTop=='0'?"确定置顶？":"确定取消置顶？"
+
+        confirm(msg).then(function() {
+			reqApi({
+	            code: '628513',
+	            json: {
+	                code: selRecords[0].code,
+	            }
+	        }).then(function() {
+	            sucList();
+	        });
+        }, function() {})
+    });
     
     
 });

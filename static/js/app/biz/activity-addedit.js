@@ -51,8 +51,12 @@ $(function() {
         required: true,
     }, {
         field: 'address',
-        title: '地址',
+        title: '导航地址',
         type: 'chooseMap',
+        required: true,
+    }, {
+        field: 'meetAddress',
+        title: '详细地址',
         required: true,
     }, {
 		title: '内容',
@@ -101,6 +105,10 @@ $(function() {
     		$("#mapWrap").removeClass("hidden");
     	})
     	
+    	$(".chooseMap-inputWrap .chooseMap-mask").click(function(){
+    		$("#chooseMap").click()
+    	})
+    	
     	//地图弹窗按钮-关闭
     	$("#mapWrap .icon-close").click(function(){
     		$("#mapWrap").addClass("hidden")
@@ -121,6 +129,7 @@ $(function() {
     		$("#latitude").val(addressList.latitude);
     		$("#mapWrap").addClass("hidden")
     	})
+    	
     	
     }
     

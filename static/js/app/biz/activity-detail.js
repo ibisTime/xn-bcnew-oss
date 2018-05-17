@@ -93,9 +93,13 @@ $(function() {
         readonly: true
     }, {
         field: 'address',
-        title: '地址',
+        title: '导航地址',
         required: true,
         readonly: true
+    }, {
+        field: 'meetAddress',
+        title: '详细地址',
+        required: true,
     }, {
 		title: '内容',
 		field: 'content',
@@ -152,6 +156,15 @@ $(function() {
         type: 'select',
         key: 'activity_status',
         formatter: Dict.getNameForList('activity_status'),
+	},{
+		title: '是否置顶',
+		field: 'isTop',
+		type: 'select',
+		data:{
+			'0':'否',
+			'1':'是'
+		},
+        hidden: isCheck
     }, {
         field: 'approveDatetime',
         title: '审批时间',

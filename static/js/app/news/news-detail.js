@@ -53,6 +53,14 @@ $(function() {
         key: 'owner_type',
         formatter: Dict.getNameForList('owner_type'),
 	},{
+		title: '是否置顶',
+		field: 'isTop',
+		type: 'select',
+		data:{
+			'0':'否',
+			'1':'是'
+		},
+	},{
         title: '热门评论',
 		field: 'hotComentList',
         readonly: true,
