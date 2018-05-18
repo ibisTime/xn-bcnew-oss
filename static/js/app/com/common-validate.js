@@ -56,7 +56,7 @@ jQuery.validator.addMethod("noactel", function(value, element) {
 
 //手机验证规则  
 jQuery.validator.addMethod("mobile", function(value, element) {
-    var mobile = /^1[3|4|5|7|8]\d{9}$/;
+    var mobile = /^1[3|4|5|7|8|9]\d{9}$/;
     return this.optional(element) || (mobile.test(value));
 }, "手机格式不对");
 
@@ -68,7 +68,7 @@ jQuery.validator.addMethod("mm", function(value, element) {
 
 //电话或手机验证规则  
 jQuery.validator.addMethod("tm", function(value, element) {
-    var tm = /(^1[3|4|5|7|8]\d{9}$)|(^\d{3,4}-\d{7,8}$)|(^\d{7,8}$)|(^\d{3,4}-\d{7,8}-\d{1,4}$)|(^\d{7,8}-\d{1,4}$|(^\d{3}-\d{3}-\d{4}$))/;
+    var tm = /(^1[3|4|5|7|8|9]\d{9}$)|(^\d{3,4}-\d{7,8}$)|(^\d{7,8}$)|(^\d{3,4}-\d{7,8}-\d{1,4}$)|(^\d{7,8}-\d{1,4}$|(^\d{3}-\d{3}-\d{4}$))/;
     return this.optional(element) || (tm.test(value));
 }, "电话或手机格式不对");
 

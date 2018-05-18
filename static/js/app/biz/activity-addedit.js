@@ -83,7 +83,7 @@ $(function() {
         addCode: '628500',
         editCode: '628502',
         beforeSubmit: function(data) {
-        	data.applyUser = getUserId();
+        	data.applyUser = getUserName();
         	return data;
         }
     });

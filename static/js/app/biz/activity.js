@@ -67,7 +67,10 @@ $(function() {
         search: true
     }, {
         field: 'toApproveCount',
-        title: '待审核数量'
+        title: '已报名待审核'
+	},{
+        field: 'approveCount',
+        title: '审核通过数量',
 	},{
 		title: '是否置顶',
 		field: 'isTop',

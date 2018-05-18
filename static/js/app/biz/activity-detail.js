@@ -127,18 +127,18 @@ $(function() {
         hidden: isCheck,
         readonly: true
     }, {
-        field: 'pointCount',
-        title: '点赞数',
-        hidden: isCheck,
-        readonly: true
-    }, {
         field: 'commentCount',
         title: '评论数',
         hidden: isCheck,
         readonly: true
     }, {
         field: 'toApproveCount',
-        title: '待审核数量',
+        title: '已报名待审核',
+        hidden: isCheck,
+        readonly: true
+    }, {
+        field: 'approveCount',
+        title: '审核通过数量',
         hidden: isCheck,
         readonly: true
     }, {
