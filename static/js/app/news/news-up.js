@@ -11,10 +11,10 @@ $(function() {
 		field: 'typeName',
         readonly: true,
 	},{
-		title: '币吧',
-		field: 'toCoinName',
-        readonly: true,
-	},{
+//		title: '币吧',
+//		field: 'toCoinName',
+//      readonly: true,
+//	},{
 		title: '来源',
 		field: 'source',
         readonly: true,

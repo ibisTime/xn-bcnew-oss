@@ -10,9 +10,9 @@ $(function() {
 		title: '类型',
 		field: 'typeName',
 	},{
-		title: '币吧',
-		field: 'toCoinName',
-	},{
+//		title: '币吧',
+//		field: 'toCoinName',
+//	},{
 		title: '来源',
 		field: 'source',
 	},{

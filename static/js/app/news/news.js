@@ -19,17 +19,17 @@ $(function() {
         formatter: function(v,data){
         	return data.typeName
         }
-	},{
-		title: '币吧',
-		field: 'toCoin',
-        type: 'select',
-		pageCode:'628235',
-        keyName: 'code',
-        valueName: 'name',
-        search:true,
-        formatter: function(v,data){
-        	return data.toCoinName
-        }
+//	},{
+//		title: '币吧',
+//		field: 'toCoin',
+//      type: 'select',
+//		pageCode:'628235',
+//      keyName: 'code',
+//      valueName: 'name',
+//      search:true,
+//      formatter: function(v,data){
+//      	return data.toCoinName
+//      }
 	},{
 		title: '来源',
 		field: 'source',

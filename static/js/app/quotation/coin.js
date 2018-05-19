@@ -13,7 +13,11 @@ $(function() {
     }, {
         title: "符号",
         field: "symbol",
-        search: true
+    }, {
+        title: "关键字查询",
+        field: "keywords",
+        search: true,
+        visible: false
     }, {
         title: "总发行量",
         field: "maxSupply",

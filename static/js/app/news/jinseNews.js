@@ -84,16 +84,16 @@ $(function() {
 		        keyName: 'code',
 		        valueName: 'name',
         		required: true,
-			},{
-				title: '币吧',
-				field: 'toCoin',
-		        type: 'select',
-				pageCode:'628235',
-				params:{
-					status: '1'
-				},
-		        keyName: 'code',
-		        valueName: 'name',
+//			},{
+//				title: '币吧',
+//				field: 'toCoin',
+//		        type: 'select',
+//				pageCode:'628235',
+//				params:{
+//					status: '1'
+//				},
+//		        keyName: 'code',
+//		        valueName: 'name',
             }],
             buttons: [{
                 title: '挑选',

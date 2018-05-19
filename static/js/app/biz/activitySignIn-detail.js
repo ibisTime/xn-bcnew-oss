@@ -106,7 +106,13 @@ $(function() {
         readonly: true
     }, {
         field: 'address',
-        title: '活动地址',
+        title: '导航地址',
+        _keys: ["activity"],
+        required: true,
+        readonly: true
+    }, {
+        field: 'meetAddress',
+        title: '详细地址',
         _keys: ["activity"],
         required: true,
         readonly: true
@@ -139,7 +145,6 @@ $(function() {
     }, {
         title: '报名状态',
         field: 'status',
-        _keys: ["activity"],
         type: 'select',
         key: 'activity_user_status',
         formatter: Dict.getNameForList('activity_user_status'),
