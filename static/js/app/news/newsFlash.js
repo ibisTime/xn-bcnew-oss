@@ -34,14 +34,6 @@ $(function() {
         },
         search: true,
 	},{
-		title: '是否置顶',
-		field: 'isTop',
-		type: 'select',
-		data:{
-			'0':'否',
-			'1':'是'
-		},
-	},{
 		title: '来源',
 		field: 'source',
 	},{

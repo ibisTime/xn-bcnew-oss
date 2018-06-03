@@ -1,5 +1,6 @@
 $(function() {
     var code = getQueryString('code');
+    var isUp = !!getQueryString('isUp');
 
     var fields = [{
     	title: '标题',
@@ -39,13 +40,8 @@ $(function() {
         title: '发布时间',
         field: 'showDatetime',
 		type: 'datetime',
-        formatter: function(v, data){
-        	if(v){
-        		return dateTimeFormat(v)
-        	} else {
-        		return dateTimeFormat(new Date())
-        	}
-        },
+		value: !isUp ? dateTimeFormat(new Date()) : '',
+        formatter: dateTimeFormat,
         required: true,
 	},{
 		title: '是否置顶',

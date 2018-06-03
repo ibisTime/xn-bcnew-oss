@@ -6,6 +6,9 @@ $(function() {
         title: '',
         checkbox: true
     }, {
+		title: '编号',
+		field: 'code'
+	},{
         field: 'title',
         title: '标题',
     }, {
@@ -147,6 +150,31 @@ $(function() {
         confirm(msg).then(function() {
 			reqApi({
 	            code: '628513',
+	            json: {
+	                code: selRecords[0].code,
+	            }
+	        }).then(function() {
+	            sucList();
+	        });
+        }, function() {})
+    });
+    
+    //下架
+    $('#downBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        
+        if(selRecords[0].status != '1'){
+            toastr.info("不是可下架的状态！");
+            return;
+        }
+
+        confirm('确定下架活动？').then(function() {
+			reqApi({
+	            code: '628504',
 	            json: {
 	                code: selRecords[0].code,
 	            }

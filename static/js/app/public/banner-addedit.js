@@ -28,11 +28,6 @@ $(function() {
         required: 'true',
         hidden: true
     }, {
-        field: "contentType",
-        required: 'true',
-        value: 1,
-        hidden: true
-    }, {
         field: "isCompanyEdit",
         required: 'true',
         value: 0,
@@ -42,15 +37,15 @@ $(function() {
         field: 'name',
         required: true,
         readonly: view,
-        maxlength: 32 //
+        maxlength: 32
     }, {
         title: '位置',
         field: 'location',
         type: "select",
-        data: {
-            "index_banner": "首页"
+        key:'banner_location',
+        formatter: function(v, data){
+        	return data.code ? Dict.getNameForList1('banner_location','',data.location) : '';
         },
-        value: "index_banner",
         required: true,
         readonly: view
     }, {
@@ -68,11 +63,17 @@ $(function() {
         required: true,
         readonly: view
     }, {
+        field: "contentType",
+        title: '链接类型',
+        type: "select",
+        key:'content_type',
+        formatter: function(v, data){
+        	return data.code ? Dict.getNameForList1('content_type','',data.contentType) : '';
+        }
+    }, {
         title: 'url地址',
         field: "url",
-        //required: true,
         readonly: view,
-        //maxlength: 255
     }, {
         title: '备注',
         field: 'remark',

@@ -5,6 +5,9 @@ $(function() {
 		title : '',
 		checkbox : true
     }, {
+		title: '编号',
+		field: 'code'
+	},{
 		title: '标题',
 		field: 'title',
         search:true
@@ -116,7 +119,8 @@ $(function() {
             toastr.info("分类已上架！");
             return;
         }
-        window.location.href = "./news_up.html?code=" + selRecords[0].code;
+        var isUp = selRecords[0].showDatetime?'1':'';
+        window.location.href = "./news_up.html?code=" + selRecords[0].code+"&isUp="+ isUp;
     });
 
     //下架

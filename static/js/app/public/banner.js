@@ -11,12 +11,9 @@ $(function() {
 	},{
 		title: '位置',
 		field: 'location',
-        formatter: function(v){
-			if(v == "index_banner"){
-				return '首页';
-			}		   
-		},  
-        
+		type:'select',
+        key:'banner_location',
+        formatter: Dict.getNameForList('banner_location'),
 	}, {
 		title: '顺序',
 		field: 'orderNo',

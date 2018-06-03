@@ -1326,6 +1326,13 @@ function buildDetail(options) {
                 if (item.type == 'select' && item.passValue) {
                     data[item.field] = $('#' + item.field).find('option:selected').html();
                 }
+                if(item.type == 'textarea' && !item.normalArea){
+                	$("body").append('<div id="'+item.field+'_textarea" style="disaply: none;"></div>')
+                	var tmpl = $('#' + item.field)[0].editor.$txt.html();
+                	$("#"+item.field+'_textarea').html(tmpl);
+			        $("#"+item.field+'_textarea').find("iframe").attr('width','100%');
+			        data[item.field] = $("#"+item.field+'_textarea').html()
+                }
             }
             data['id'] = data['code'];
             if (options.beforeSubmit) {
@@ -1333,7 +1340,7 @@ function buildDetail(options) {
                     return;
                 }
             }
-
+            
             var request = function() {
             	showLoading();
                 reqApi({
@@ -1911,7 +1918,7 @@ function buildDetail(options) {
                     } else if (item.type == 'datetime' || item.type == 'date') {
                         $('#' + item.field).val((item.type == 'datetime' ? dateTimeFormat : dateFormat)(displayValue));
                     } else {
-                        if (item.formatter) {
+                        if (item.formatter && !item.key) {
                             $('#' + item.field).val(item.formatter(displayValue, data));
                         } else {
                             $('#' + item.field).val((item.amount || item.amount1) ?
