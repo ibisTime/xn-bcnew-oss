@@ -4,7 +4,9 @@
     "description": "xn-yc-oss",
     "main": "fis-conf.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "fis3 release -d D:/chengdai_dabao/bcnew_oss -w",
+        "build": "fis3 release -d D:/chengdai_dabao/bcnew_oss prod"
     },
     "author": "",
     "license": "ISC",
