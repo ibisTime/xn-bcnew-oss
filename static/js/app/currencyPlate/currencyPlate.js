@@ -46,6 +46,9 @@ $(function() {
         title: '更新时间',
         formatter: dateTimeFormat
     }, {
+        field: 'updater',
+        title: '更新人'
+    }, {
         field: 'remark',
         title: '备注',
     }];

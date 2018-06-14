@@ -20,7 +20,8 @@ $(function() {
         required: true
     }, {
         field: 'orderNo',
-        title: '序号'
+        title: '序号',
+        number: true
     }, {
         field: 'remark',
         title: '备注',
