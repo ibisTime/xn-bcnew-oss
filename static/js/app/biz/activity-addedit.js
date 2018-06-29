@@ -29,8 +29,11 @@ $(function() {
     }, {
         field: 'price',
         title: '价格',
+<<<<<<< HEAD
         amount: true,
         formatter: moneyFormat,
+=======
+>>>>>>> parent of e8c5e81... update
         required: true,
     }, {
         field: 'maxCount',
