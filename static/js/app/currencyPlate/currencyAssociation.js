@@ -5,9 +5,6 @@ $(function() {
         title: '',
         checkbox: true
     }, {
-        field: 'coinId',
-        title: '币种id'
-    }, {
         field: 'symbol',
         title: '币种符号',
     }, {
@@ -19,9 +16,6 @@ $(function() {
         valueName: 'name',
         search: true,
         visible: false
-    }, {
-        field: 'symbolPlateCode',
-        title: '币种版块编号'
     }, {
         field: 'symbolPlateName',
         title: '板块名称',

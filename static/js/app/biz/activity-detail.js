@@ -67,8 +67,6 @@ $(function() {
     }, {
         field: 'price',
         title: '价格',
-        amount: true,
-        formatter: moneyFormat,
         required: true,
         readonly: true
     }, {

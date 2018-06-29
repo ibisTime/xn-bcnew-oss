@@ -10,7 +10,8 @@ $(function() {
     }, {
         field: "description",
         title: "介绍",
-        required: 'true'
+        required: 'true',
+        type: 'textarea'
     }, {
         field: 'location',
         title: '所在位置',

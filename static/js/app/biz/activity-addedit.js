@@ -18,8 +18,7 @@ $(function() {
     }, {
         field: 'contactMobile',
         title: '联系电话',
-        tm: true,
-        required: true,
+        tm: true
     }, {
         field: 'advPic',
         title: '广告图',
@@ -28,13 +27,11 @@ $(function() {
         required: true,
     }, {
         field: 'price',
-        title: '价格',
-        required: true,
+        title: '价格'
     }, {
         field: 'maxCount',
         title: '最大报名人数',
-        number: true,
-        required: true,
+        number: true
     }, {
         field: 'startDatetime',
         title: '开始时间',

@@ -13,8 +13,7 @@ $(function() {
         title: '标题',
     }, {
         field: 'price',
-        title: '价格',
-        formatter: moneyFormat
+        title: '价格'
     }, {
         field: 'maxCount',
         title: '最大报名人数'
