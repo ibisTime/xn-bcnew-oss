@@ -6,28 +6,16 @@ $(function() {
         title: '标题',
 		field: 'title',
         required: true,
+        maxlength: 24
 	},{
 		title: '类型',
-		field: 'type',
-        type: 'select',
-		pageCode:'628005',
-		params:{
-			status: "1"
-		},
+		field: 'typeList',
+        type: 'checkbox',
+		listCode:'628007',
         keyName: 'code',
         valueName: 'name',
-        required: true,
+        required: true
 	},{
-//		title: '币吧',
-//		field: 'toCoin',
-//      type: 'select',
-//		pageCode:'628235',
-//		params:{
-//			status: '1'
-//		},
-//      keyName: 'code',
-//      valueName: 'name',
-//	},{
 		title: '来源',
 		field: 'source',
 	},{
@@ -39,12 +27,24 @@ $(function() {
 		type: 'img',
         required: true,
 	},{
+        title: '摘要',
+        field: 'summary',
+        type: 'textarea',
+        required: true,
+        normalArea: true
+    },{
 		title: '内容',
 		field: 'content',
 		type: 'textarea',
-        required: true,
+        required: true
     }];
-
+    setTimeout(() => {
+        const parEle = $('#content').parent()[0];
+        const pEle = `<p style="color: red;margin-top: 15px;">
+            注：内容不能低于600个字, 每300个字之后，要有一张图片
+        </p>`;
+        $(parEle).append(pEle);
+    }, 500);
     buildDetail({
         fields: fields,
         code: code,
@@ -52,6 +52,12 @@ $(function() {
         addCode: "628190",
         editCode: "628191",
         detailCode: "628196",
+        beforeSubmit(params) {
+            if(typeof params.typeList === 'string') {
+                params.typeList = [params.typeList];
+            }
+            return params;
+        }
     });
 
 });

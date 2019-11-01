@@ -4,7 +4,9 @@
     "description": "xn-yc-oss",
     "main": "fis-conf.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dist": "fis3 release -d ./dist",
+        "start": "fis3 release -d ../dist -w",
+        "build": "fis3 release -d ../dist prod"
     },
     "author": "",
     "license": "ISC",

@@ -1052,7 +1052,7 @@ function selectImage(file, name) {
     zipImg(file.files[0], document.getElementById(name) || name);
 }
 
-function buildDetail(options) {
+async function buildDetail(options) {
 	showLoading();
     options = options || {};
     var code = options.code;
@@ -1067,7 +1067,7 @@ function buildDetail(options) {
         textareaList = [];
     var dateTimeList = [],
         imgList = [];
-
+    var checkList = [];
     //页面构造
     for (var i = 0, len = fields.length; i < len; i++) {
         var item = fields[i];
@@ -1186,11 +1186,21 @@ function buildDetail(options) {
                 }
                 html += '</li>';
             } else if (item.type == "checkbox") {
-                for (var k = 0, len1 = item.items.length; k < len1; k++) {
-                    var rd = item.items[k];
-                    html += '<input type="checkbox" id="' + item.field + '_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">' + (rd.value || '') + '<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                if(item.listCode) {
+                    const data = await reqApi({ code: item.listCode, json: {} }, true);
+                    for (var k = 0, len1 = data.length; k < len1; k++) {
+                        var rd = data[k];
+                        html += '<input type="checkbox" id="' + item.field + '_checkbox' + k + '" name="' + item.field + '" value="' + rd[item.keyName] + '"><label for="radio' + k + '" class="radio-text">' + (rd[item.valueName] || '') + '<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                    }
+                    html += '</li>';
+                    checkList = data;
+                }else {
+                    for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                        var rd = item.items[k];
+                        html += '<input type="checkbox" id="' + item.field + '_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">' + (rd.value || '') + '<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                    }
+                    html += '</li>';
                 }
-                html += '</li>';
             } else if (item.type == 'password') {
                 html += '<input id="' + item.field + '" type="password" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
@@ -1867,13 +1877,16 @@ function buildDetail(options) {
                     } else if (item.type == 'radio') {
                         $('input[name=' + item.field + '][value=' + displayValue + ']').prop('checked', true);
                     } else if (item.type == "checkbox") {
-                        var checkData = displayValue.split(/,/);
-                        for (var h = 0; h < checkData.length; h++) {
-                            for (var k = 0, len1 = item.items.length; k < len1; k++) {
-                                var rd = item.items[k];
-                                if (rd.key == checkData[h]) {
-                                    $("#" + item.field + "_checkbox" + k).prop("checked", true);
-                                    break;
+                        let items = item.listCode ? checkList : item.items;
+                        if(typeof displayValue === 'string') {
+                            var checkData = displayValue.split(/,/);
+                            for (var h = 0; h < checkData.length; h++) {
+                                for (var k = 0, len1 = items.length; k < len1; k++) {
+                                    var key = item.listCode ? items[k][item.keyName] : items[k].key;
+                                    if (key == checkData[h]) {
+                                        $("#" + item.field + "_checkbox" + k).prop("checked", true);
+                                        break;
+                                    }
                                 }
                             }
                         }

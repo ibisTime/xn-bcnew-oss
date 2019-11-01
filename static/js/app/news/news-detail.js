@@ -8,7 +8,7 @@ $(function() {
         required: true,
 	},{
 		title: '类型',
-		field: 'typeName',
+		field: 'typeName'
 	},{
 //		title: '币吧',
 //		field: 'toCoinName',

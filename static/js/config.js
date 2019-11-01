@@ -6,9 +6,9 @@ OSS.system = 'CD-BCINF0019';
 // companyCode
 OSS.company = 'CD-BCINF0019';
 // system name
-OSS.systemName = '链接社管理平台';
+OSS.systemName = '币对财经';
 // company name
-OSS.companyName = '链接社';
+OSS.companyName = '币对财经';
 // menuCode
 OSS.menuRoot = 'INFOSM201700000000000000';
 // picUrl
