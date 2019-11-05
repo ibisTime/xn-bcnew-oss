@@ -16,6 +16,10 @@ $(function() {
         valueName: 'name',
         required: true
 	},{
+        title: '关键字(以英文逗号分隔)',
+        field: 'keywords',
+        required: true
+    },{
 		title: '来源',
 		field: 'source',
 	},{

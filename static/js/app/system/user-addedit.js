@@ -2,6 +2,14 @@ $(function() {
 	
 	var code = getQueryString('code');
 	
+    setTimeout(() => {
+        const parEle = $('#loginName').parent()[0];
+        const pEle = `<span style="color: red;margin-left: 15px;display: inline-block;">
+            默认密码为：888888
+        </span>`;
+        $(parEle).append(pEle);
+    }, 500);
+    
 	var fields = [{
 		field: 'kind',
 		type: 'hidden',

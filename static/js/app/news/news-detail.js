@@ -36,61 +36,75 @@ $(function() {
         key: 'news_status',
         formatter: Dict.getNameForList('news_status'),
 	},{
-        title: '发布时间',
+        field: 'approveResult',
+        title: '审核结果',
+        required: true,
+        data: {
+            '1': '通过',
+            '0': '不通过'
+        },
+        type: 'select'
+    }, {
         field: 'showDatetime',
+        title: '展示时间',
         formatter: dateTimeFormat,
-	},{
+    }, {
+        title: '是否置顶',
+        field: 'isTop',
+        type: 'select',
+        data:{
+            '0':'否',
+            '1':'是'
+        }
+    }, {
+        title: '审核备注',
+        field: 'remark',
+        type: 'textarea',
+        normalArea: true
+    }, {
         title: '更新时间',
         field: 'updateDatetime',
         formatter: dateTimeFormat,
-	},{
+    }, {
         title: '拥有者名称',
         field: 'ownerName',
-	},{
-		title: '拥有者类型',
-		field: 'ownerType',
+    },{
+        title: '拥有者类型',
+        field: 'ownerType',
         type: 'select',
         key: 'owner_type',
         formatter: Dict.getNameForList('owner_type'),
-	},{
-		title: '是否置顶',
-		field: 'isTop',
-		type: 'select',
-		data:{
-			'0':'否',
-			'1':'是'
-		},
-	},{
+    },{
         title: '热门评论',
-		field: 'hotComentList',
+        field: 'hotComentList',
         readonly: true,
         type: 'o2m',
         columns: [{
             title: '评论内容',
             field: 'content',
-		},{
-			title: '评论人',
-			field: 'nickname',
-		},{
-			title: '评论时间',
-			field: 'commentDatetime',
-        	formatter: dateTimeFormat,
+        },{
+            title: '评论人',
+            field: 'nickname',
+        },{
+            title: '评论时间',
+            field: 'commentDatetime',
+            formatter: dateTimeFormat,
         }]
-	},{
+    },{
         title: '评论',
-		field: 'comentList',
+        field: 'comentList',
         readonly: true,
         type: 'o2m',
         columns: [{
             title: '评论内容',
             field: 'content',
-		},{
-			title: '评论人',
-			field: 'nickname',
-		},{
-			title: '评论时间',
-			field: 'commentDatetime',
-        	formatter: dateTimeFormat,
+        },{
+            title: '评论人',
+            field: 'nickname',
+        },{
+            title: '评论时间',
+            field: 'commentDatetime',
+            formatter: dateTimeFormat,
         }]
     }];
 

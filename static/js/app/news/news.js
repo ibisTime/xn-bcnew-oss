@@ -9,28 +9,6 @@ $(function() {
 		field: 'title',
         search:true
 	},{
-		title: '类型',
-		field: 'type',
-        type: 'select',
-		pageCode:'628005',
-        keyName: 'code',
-        valueName: 'name',
-        search:true,
-        formatter: function(v,data){
-        	return data.typeName
-        }
-//	},{
-//		title: '币吧',
-//		field: 'toCoin',
-//      type: 'select',
-//		pageCode:'628235',
-//      keyName: 'code',
-//      valueName: 'name',
-//      search:true,
-//      formatter: function(v,data){
-//      	return data.toCoinName
-//      }
-	},{
 		title: '来源',
 		field: 'source',
         search:true
@@ -106,14 +84,14 @@ $(function() {
 	})
 	
     //上架
-    $('#upBtn').click(function() {
+    $('#auditBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        if (selRecords[0].status == '1') {
-            toastr.info("分类已上架！");
+        if (selRecords[0].status === '1') {
+            toastr.info("该状态下不能进行该操作！");
             return;
         }
         window.location.href = "./news_up.html?code=" + selRecords[0].code;
@@ -127,8 +105,8 @@ $(function() {
             return;
         }
 
-        if (selRecords[0].status != '1') {
-            toastr.info("未上架或已下架！");
+        if (selRecords[0].status !== '1') {
+            toastr.info("该状态下不能进行该操作！");
             return;
         }
 
@@ -152,7 +130,7 @@ $(function() {
             return;
         }
         
-        var msg = selRecords[0].isTop=='0'?"确定置顶？":"确定取消置顶？"
+        var msg = selRecords[0].isTop === '0'?"确定置顶？":"确定取消置顶？"
 
         confirm(msg).then(function() {
 			reqApi({
@@ -165,6 +143,4 @@ $(function() {
 	        });
         }, function() {})
     });
-    
-    
 });

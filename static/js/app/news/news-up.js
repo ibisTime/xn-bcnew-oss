@@ -1,20 +1,15 @@
 $(function() {
     var code = getQueryString('code');
-
+	var approveOk = true;
     var fields = [{
     	title: '标题',
 		field: 'title',
-        required: true,
         readonly: true,
 	},{
 		title: '类型',
 		field: 'typeName',
         readonly: true,
 	},{
-//		title: '币吧',
-//		field: 'toCoinName',
-//      readonly: true,
-//	},{
 		title: '来源',
 		field: 'source',
         readonly: true,
@@ -27,35 +22,60 @@ $(function() {
 		field: 'advPic',
 		type: 'img',
 		single: true,
-        required: true,
         readonly: true,
 	},{
 		title: '内容',
 		field: 'content',
 		type: 'textarea',
-        required: true,
         readonly: true,
 	},{
-        title: '发布时间',
+        field: 'approveResult',
+        title: '审核结果',
+        required: true,
+        data: {
+            '1': '通过',
+            '0': '不通过'
+        },
+        type: 'select',
+        onChange(v) {
+            if(v) {
+                approveOk = v === '0';
+                if(!approveOk) {
+                    const nextLiAll = $($('#approveResult_chosen').parent()[0]).nextAll('.clearfix');
+                    $(nextLiAll).each((index, item) => {
+                        $(item).show();
+                    });
+                }else {
+                    const nextLiAll = $($('#approveResult_chosen').parent()[0]).nextAll('.clearfix');
+                    $(nextLiAll).each((index, item) => {
+                        $(item).hide();
+                    });
+                }
+            }
+        }
+    }, {
         field: 'showDatetime',
-		type: 'datetime',
-        formatter: function(v, data){
-        	if(v){
-        		return dateTimeFormat(v)
-        	} else {
-        		return dateTimeFormat(new Date())
-        	}
+        title: '展示时间',
+        required: true,
+        type: 'datetime',
+        hidden: approveOk
+    }, {
+        title: '是否置顶',
+        field: 'isTop',
+        type: 'select',
+        data:{
+            '0':'否',
+            '1':'是'
         },
         required: true,
-	},{
-		title: '是否置顶',
-		field: 'isTop',
-		type: 'select',
-		data:{
-			'0':'否',
-			'1':'是'
-		},
+        hidden: approveOk
+    }, {
+        title: '审核备注',
+        field: 'remark',
+        type: 'textarea',
+        normalArea: true,
         required: true,
+        hidden: approveOk
     }];
 
     buildDetail({
@@ -63,16 +83,23 @@ $(function() {
         code: code,
         detailCode: "628196",
         buttons:[{
-	        title: '上架',
+	        title: '确定',
 	        handler: function() {
-                var data = $('#jsForm').serializeObject();
-	            data.code = code;
-	            reqApi({
-	                code: '628192',
-	                json: data
-	            }).done(function(data) {
-	                sucDetail();
-	            });
+	            if($('#jsForm').valid()) {
+                    var data = $('#jsForm').serializeObject();
+                    data.code = code;
+                    if(approveOk) {
+                        delete data.showDatetime;
+                        delete data.isTop;
+                        delete data.remark;
+                    }
+                    reqApi({
+                        code: '628192',
+                        json: data
+                    }).done(function() {
+                        sucDetail();
+                    });
+                }
 	        }
 	    }, {
 	        title: '返回',
