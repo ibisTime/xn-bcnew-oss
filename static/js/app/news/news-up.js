@@ -40,16 +40,18 @@ $(function() {
         onChange(v) {
             if(v) {
                 approveOk = v === '0';
+                const nextLiAll = $($('#approveResult_chosen').parent()[0]).nextAll('.clearfix');
+                const lastEle = $($('#approveResult_chosen').parent()[0]).nextAll('.clearfix').last();
                 if(!approveOk) {
-                    const nextLiAll = $($('#approveResult_chosen').parent()[0]).nextAll('.clearfix');
                     $(nextLiAll).each((index, item) => {
                         $(item).show();
                     });
+                    $(lastEle).hide();
                 }else {
-                    const nextLiAll = $($('#approveResult_chosen').parent()[0]).nextAll('.clearfix');
                     $(nextLiAll).each((index, item) => {
                         $(item).hide();
                     });
+                    $(lastEle).show();
                 }
             }
         }
@@ -75,7 +77,7 @@ $(function() {
         type: 'textarea',
         normalArea: true,
         required: true,
-        hidden: approveOk
+        hidden: !approveOk
     }];
 
     buildDetail({
@@ -91,7 +93,6 @@ $(function() {
                     if(approveOk) {
                         delete data.showDatetime;
                         delete data.isTop;
-                        delete data.remark;
                     }
                     reqApi({
                         code: '628192',

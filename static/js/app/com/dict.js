@@ -13,6 +13,7 @@ Dict.findName = function(data, key, k, v) {
             break;
         }
     }
+    console.log(res);
     return res;
 };
 Dict.findObj = function(data, key, k) {

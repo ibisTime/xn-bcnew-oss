@@ -90,7 +90,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if (selRecords[0].status === '1') {
+        if (selRecords[0].status !== '0') {
             toastr.info("该状态下不能进行该操作！");
             return;
         }

@@ -10,12 +10,12 @@ $(function() {
 		title: '类型',
 		field: 'typeName'
 	},{
-//		title: '币吧',
-//		field: 'toCoinName',
-//	},{
 		title: '来源',
 		field: 'source',
 	},{
+        title: '关键字(以英文逗号分隔)',
+        field: 'keywords'
+    },{
 		title: '作者',
 		field: 'auther',
 	},{
@@ -36,15 +36,6 @@ $(function() {
         key: 'news_status',
         formatter: Dict.getNameForList('news_status'),
 	},{
-        field: 'approveResult',
-        title: '审核结果',
-        required: true,
-        data: {
-            '1': '通过',
-            '0': '不通过'
-        },
-        type: 'select'
-    }, {
         field: 'showDatetime',
         title: '展示时间',
         formatter: dateTimeFormat,
@@ -57,7 +48,7 @@ $(function() {
             '1':'是'
         }
     }, {
-        title: '审核备注',
+        title: '备注',
         field: 'remark',
         type: 'textarea',
         normalArea: true
@@ -74,38 +65,38 @@ $(function() {
         type: 'select',
         key: 'owner_type',
         formatter: Dict.getNameForList('owner_type'),
-    },{
-        title: '热门评论',
-        field: 'hotComentList',
-        readonly: true,
-        type: 'o2m',
-        columns: [{
-            title: '评论内容',
-            field: 'content',
-        },{
-            title: '评论人',
-            field: 'nickname',
-        },{
-            title: '评论时间',
-            field: 'commentDatetime',
-            formatter: dateTimeFormat,
-        }]
-    },{
-        title: '评论',
-        field: 'comentList',
-        readonly: true,
-        type: 'o2m',
-        columns: [{
-            title: '评论内容',
-            field: 'content',
-        },{
-            title: '评论人',
-            field: 'nickname',
-        },{
-            title: '评论时间',
-            field: 'commentDatetime',
-            formatter: dateTimeFormat,
-        }]
+    // },{
+    //     title: '热门评论',
+    //     field: 'hotComentList',
+    //     readonly: true,
+    //     type: 'o2m',
+    //     columns: [{
+    //         title: '评论内容',
+    //         field: 'content',
+    //     },{
+    //         title: '评论人',
+    //         field: 'nickname',
+    //     },{
+    //         title: '评论时间',
+    //         field: 'commentDatetime',
+    //         formatter: dateTimeFormat,
+    //     }]
+    // },{
+    //     title: '评论',
+    //     field: 'comentList',
+    //     readonly: true,
+    //     type: 'o2m',
+    //     columns: [{
+    //         title: '评论内容',
+    //         field: 'content',
+    //     },{
+    //         title: '评论人',
+    //         field: 'nickname',
+    //     },{
+    //         title: '评论时间',
+    //         field: 'commentDatetime',
+    //         formatter: dateTimeFormat,
+    //     }]
     }];
 
     buildDetail({
