@@ -25,10 +25,11 @@ $(function() {
 		single: true,
         required: true,
 	},{
+        title: '摘要',
+        field: 'summary'
+    },{
 		title: '内容',
-		field: 'content',
-		type: 'textarea',
-        required: true,
+		field: 'content'
 	},{
 		title: '状态',
 		field: 'status',

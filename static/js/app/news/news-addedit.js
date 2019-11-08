@@ -35,7 +35,8 @@ $(function() {
         field: 'summary',
         type: 'textarea',
         required: true,
-        normalArea: true
+        normalArea: true,
+        maxlength: 180
     },{
 		title: '内容',
 		field: 'content',
