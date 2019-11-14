@@ -25,6 +25,8 @@ $(function() {
     }, {
         title: "图标",
         field: "pic",
+        type: 'img',
+        single: true
     }, {
         title: "币种介绍",
         field: "introduce",
