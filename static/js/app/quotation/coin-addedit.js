@@ -23,6 +23,9 @@ $(function() {
         title: "单位",
         field: "unit",
     }, {
+        title: "图标",
+        field: "pic",
+    }, {
         title: "币种介绍",
         field: "introduce",
         type:'textarea',
